@@ -26,7 +26,7 @@ object FileOps {
     def deleteAll(unsafeDelete: Boolean = false) = {
       // XXX: We only care about deleting within our current directory, so let's make this safer:
       if (!unsafeDelete) {
-        if (!(file.getAbsolutePath startsWith new File(".").getAbsolutePath))
+        if (!(file.getAbsolutePath startsWith new File("").getAbsolutePath))
           throw new Exception("You can only deleteAll() for subdirectories of pwd.")
       }
 
