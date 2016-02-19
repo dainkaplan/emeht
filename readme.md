@@ -7,7 +7,7 @@ Mainly to let you, after you have inverted your screen colours, to make an inver
 
 ## UH... WHY??
 
-Why would you want to do invert a colour theme on a colour-inverted screen? Good question... Mostly for coding in pitch-black environments when you have to switch between many programs, some of which have light backgrounds by necessity. 
+Why would you want to invert a colour theme on a colour-inverted screen? Good question... Mostly for coding in pitch-black environments when you have to switch between many programs, some of which have light backgrounds by necessity. 
 
 In particular, many international flights have a period of lights-out time that makes for _very dark_ (virtually no) lighting. If you are only coding, then simply a dark colour theme will be fine. However, if you need to switch to other apps, such as a web browser or a PDF etc. that has a light-coloured background by necessity, it is downright painful to look at. OS X has a handy feature of inverting the colours on screen (needs to be enabled, but CTRL+OPT+CMD+8), and there is also Nocturne/Tranquility for OS X that inverts colours _and_ prevents glaring brightness. But!!!! If you invert the colours, you'll need to select a light colour scheme to get back to a dark theme, but since the colours are now inverted, the theme does not look as intended; in fact, it usually looks pretty horrible; enter Emeht, who will take your originally dark-colour theme, invert it to be a light colour theme so that when you invert your screen colours, you get back your _original_, intended colour theme for happy coding in those pitch-black rooms!
 
