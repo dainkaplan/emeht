@@ -13,7 +13,7 @@ In particular, many international flights have a period of lights-out time that 
 
 ## Supported color settings files
 
-Clone the repo, and then follow specific instructions for different colour theme file types. In all cases, it will outpupt a file in the pwd that is the original file name with ".emeht" sandwiched in before the extension, e.g. "settings.jar" becomes "settings.emeht.har".
+Clone the repo, and then follow specific instructions for different colour theme file types. In all cases, it will outpupt a file in the pwd that is the original file name with ".emeht" sandwiched in before the extension, e.g. "settings.jar" becomes "settings.emeht.jar".
  
 ### Intellij settings.jar files
 
