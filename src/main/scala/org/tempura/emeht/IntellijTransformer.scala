@@ -1,35 +1,5 @@
 package org.tempura.emeht
 
-object HexToRGBOps {
-  def handle6(str: String) =
-    for (cc <- str.sliding(2,2).toSeq) yield java.lang.Short.valueOf(cc, 16).toShort
-  def handle3(str: String) =
-    for (c <- str) yield java.lang.Short.valueOf(c.toString * 2, 16).toShort
-
-  implicit class ToHexStr(int: Int) {
-    def toHexStr = "%02x".format(int)
-  }
-
-  val hexDigits = Set() ++ ('0' to '9') ++ ('a' to 'f') ++ ('A' to 'F')
-
-  def notHex(digits: String): Boolean =
-    digits.exists(c => !hexDigits.contains(c))
-
-  def hexToRGB(str: String): Seq[Short] = {
-    val trimmed = if (str startsWith "#") str.drop(1) else str
-    if (trimmed.length > 6 || notHex(trimmed)) List()
-    else handle6(("0" * (6 - trimmed.length)) + trimmed)
-  }
-
-  def invert(in: String): String = hexToRGB(in) match {
-    case List() => in
-    case converted => (for {
-      s <- hexToRGB(in)
-      i = 0xFF - s // Actually invert the code
-    } yield i.toHexStr).mkString
-  }
-}
-
 object IntellijTransformer {
   // add an implicit conversion from Transform -> NodeSeq
   import org.fusesource.scalate.scuery.Transformer
@@ -43,7 +13,7 @@ object IntellijTransformer {
       (for {
         attrs <- n.attribute("value")
         attr <- attrs.headOption
-      } yield HexToRGBOps.invert(attr.text)).getOrElse("")
+      } yield ColorOps.invert(attr.text)).getOrElse("")
     }
     $("scheme attributes option value option").attribute("value") { n =>
       //println(n)
@@ -52,7 +22,7 @@ object IntellijTransformer {
         attr <- attrs.headOption
         name = n.attribute("name").exists(_.map(_.text).exists(isColorName))
       } yield name match {
-        case true => HexToRGBOps.invert(attr.text)
+        case true => ColorOps.invert(attr.text)
         case false => attr.text
       }).getOrElse("")
     }

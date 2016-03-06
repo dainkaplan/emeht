@@ -20,13 +20,13 @@ object Runner extends App { self =>
         flag(
           short = "-c",
           long  = "--no_cleanup",
-          info  = "If set, will remove inflated temporary files; default is false")(cfg => cfg.copy(cleanUpAfter = false))
+          info  = "If set, when applicable will remove any inflated temporary files; default is false")(cfg => cfg.copy(cleanUpAfter = false))
 
         reqd[String](
           short = "-t",
           long  = "--settings_type",
-          info  = "Type of settings file to invert colors for; currently only 'intellij' supported, which is default."
-        )((p, cfg) => cfg.copy(settingsType = p))
+          info  = "Type of settings file to invert colors for; currently 'intellij' and 'sublime'/'textmate' supported; IntelliJ is default."
+        )((p, cfg) => cfg.copy(settingsType = p.toLowerCase))
 
         arg[java.io.File]((p, cfg) => cfg.copy(sourceSettings = p))
       }.parse(args, RunnerOpts())
@@ -47,6 +47,8 @@ class EmehtRunner(opts: RunnerOpts) {
   def run() = opts.settingsType match {
     case "intellij" =>
       IntellijColorSettingsInverter.invertColorsForSettingsJar(opts.sourceSettings, opts.cleanUpAfter)
+    case "textmate" | "sublime" =>
+      TextMateThemeInverter.invertColorsForTmTheme(opts.sourceSettings)
     case t => println(s"Unsupported settings file type $t; doing nothing.")
   }
 }

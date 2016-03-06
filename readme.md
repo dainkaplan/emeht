@@ -20,3 +20,12 @@ Clone the repo, and then follow specific instructions for different colour theme
     sbt 'run --settings_type intellij path/to/some/settings.jar'
 
 For Intellij, it will create "Theme (emeht)" versions of all the themes within the settings.jar file. If you have 4 themes in the jar, it will produce 4 themes in the output jar, all will be inverted with " (emeht)" appended to their names.
+
+### Sublime Text / TextMate theme-supported Editors 
+
+    sbt 'run --settings_type textmate path/to/file.tmTheme'
+    
+For `.tmTheme` files, it will create a `.emeht.tmTheme` file in the root of this project. 
+Copy that file where ever your editor needs it. 
+For Sublime Text, go to Sublime Text->Preferences->Browse Packages, open the "User" folder and copy it in there.
+To activate the theme in Sublime Text, then go to Sublime Text->Preferences->Color Scheme->User and select `[your theme].emeht`.
